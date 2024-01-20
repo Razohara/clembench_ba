@@ -1,0 +1,1 @@
+Let's play a game. You must have a conversation at a $context with your conversation partner. Both of you know $subjects and have the following information: $entity1_info, $entity2_info. You will do it for $nturns turns. In between rounds, you will sometimes be asked to give your opinion, as well as after the game has finished.
