@@ -50,8 +50,4 @@ EXPECTATIONS = {'a': {'pre': {'refl': ['yes'],
                                 {'refl': ['no', "don't know"], 
                                  'symm': ['no', "don't know"]}}}}
 # standard messages
-UPDATE = 'Value for {} anticipated; ground truth turn updated from {} to {}.'
-NOT_SUCCESS = 'Answer for {} invalid after max attempts.'
-SUCCESS = 'Answer for {} valid after {} tries.'
-RESULT = 'Answer is {}correct.'
 NOT_PARSED = 'Answer could not be parsed!'
