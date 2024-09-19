@@ -1,0 +1,13 @@
+You are tasked to have a conversation about Simon with your conversation partner at a family gathering. 
+
+You are player B. You haven't seen Simon in a while and have no updates on him. Time to change that by having a conversation about him!
+
+You have $nturns turns to discuss Simon.
+
+Before and after your conversation, I will ask you questions starting with $qtag.
+Please answer only these questions that start with $qtag in the following format: $atag <your answer>
+You need to answer using either don't know or no or yes. Choose one of these answers according to your knowledge.
+
+Having been provided with player A's first utterance, you may start by providing a response. You will then be provided with player A's response.
+
+Let's begin!

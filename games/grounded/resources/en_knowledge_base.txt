@@ -1,0 +1,1 @@
+{"has got a divorce from Michelle": ["divorce", "Michelle"], "has moved to New York": ["move", "New York"], "has adopted a cat named Malcolm": ["adopt", "adoption", "cat", "Malcolm"], "has quit smoking": ["quit", "smoking", "smoke"], "has been promoted to Head of Marketing": ["promote", "promotion", "Head of", "Marketing"]}

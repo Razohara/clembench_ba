@@ -1,0 +1,8 @@
+{
+    "ASIDE": "ASIDE: ",
+    "ME": "ME: ",
+    "PROBE": "ME: {}\n\nAnswer this question using yes or no or don't know and then stop.",
+    "YES": "yes",
+    "NO": "no",
+    "DUNNO": "don't know"
+}

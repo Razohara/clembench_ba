@@ -1,0 +1,14 @@
+You are tasked to have a conversation about Simon with your conversation partner at a family gathering. 
+
+You are player A. You know the following fact and need to have a conversation with player B about it: 
+$fact.
+
+You have $nturns turns to discuss this fact about Simon.
+
+Before and after your conversation, I will ask you questions starting with $qtag.
+Please answer only these questions that start with $qtag in the following format: $atag <your answer>
+You need to answer using either don't know or no or yes. Choose one of these answers according to your knowledge.
+
+When the conversation starts, you may begin by providing your first utterance for player B. You will then be provided with player B's response. 
+
+Let's begin!
