@@ -869,8 +869,9 @@ class GroundedGameScorer(GameScorer):
         lose = int(episode_interactions[ms.METRIC_LOSE]) if not aborted else 0
         success =  1 - lose if not aborted else 0
 
-        # quality score 
-        bench_score = ratio_expected_all_final if not aborted else np.nan
+        # quality score normalized to benchscore
+        normalized_quality_score = ratio_expected_all_final * 100
+        bench_score = normalized_quality_score if not aborted else np.nan
 
         # parsed requests success ratio for probings
         self.log_episode_score('Request success ratio in probings', probings_parsed_counter / probings_requests_counter if probings_requests_counter != 0 else 0)
@@ -905,8 +906,38 @@ class GroundedGameScorer(GameScorer):
         self.log_episode_score('Ratio of probing questions matched of game', ratio_expected_all)
 
         self.log_episode_score('Discussion of fact indicated', discussion_indicated)
-        self.log_episode_score('Fact mentioned by P1', fact_mentioned_a)
-        self.log_episode_score('Fact mentioned by P2', fact_mentioned_b)
+
+        if max_turns == 20:
+            complturn_when_post_passed = 16
+        elif max_turns == 30:
+            complturn_when_post_passed = 26
+        elif max_turns == 40:
+            complturn_when_post_passed = 36
+
+        pd_post_not_reached = True if (played_turns < complturn_when_post_passed) else False
+        discussion_not_indicated = True if (not discussion_indicated and (played_turns > complturn_when_post_passed)) else False
+        self.log_episode_score('Discussion of fact not indicated', discussion_not_indicated)
+        self.log_episode_score('Abort or Lose prior to Post', pd_post_not_reached)
+
+        if played_turns < 5:
+            pd_not_reached = True
+        else:
+            pd_not_reached = False
+
+        labels_used_a = True if (fact_mentioned_a and not pd_not_reached) else False
+        labels_used_b = True if (fact_mentioned_b and not pd_not_reached) else False
+        labels_not_used_a = True if (not labels_used_a and not pd_not_reached) else False
+        labels_not_used_b = True if (not labels_used_b and not pd_not_reached) else False
+        labels_not_used = True if (labels_not_used_a and labels_not_used_b) else False
+        labels_used = True if (labels_used_a and labels_used_b) else False
+        self.log_episode_score('Labels used by P1', labels_used_a)
+        self.log_episode_score('Labels used by P2', labels_used_b)
+        self.log_episode_score('Labels not used by P1', labels_not_used_a)
+        self.log_episode_score('Labels not used by P2', labels_not_used_b)
+        self.log_episode_score('Labels used', labels_used)
+        self.log_episode_score('Labels not used', labels_not_used)
+        self.log_episode_score('Abort or Lose prior to Player Dialogue', pd_not_reached)
+
 
         self.log_episode_score(ms.METRIC_ABORTED, aborted)
         self.log_episode_score(ms.METRIC_LOSE, lose)
